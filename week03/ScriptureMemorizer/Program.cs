@@ -1,6 +1,7 @@
 // Creativity: loading scriptures from a file and picking one at random
 
 
+using System;
 using System.Collections.Generic;
 using System.IO;
 
@@ -8,7 +9,7 @@ class Program
 {
     static void Main()
     {
-        string filePath = "scriptures.txt";
+        string filePath = Path.Combine(AppContext.BaseDirectory, "scriptures.txt");
 
         if (!File.Exists(filePath))
         {
