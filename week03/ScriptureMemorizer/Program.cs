@@ -1,13 +1,31 @@
-using System;
+// Creativity: loading scriptures from a file and picking one at random
+
+
+using System.Collections.Generic;
+using System.IO;
 
 class Program
 {
-    static void Main(string[] args)
+    static void Main()
     {
-        var reference = new Reference("John", 3, 16);
-        var scripture = new Scripture(reference,
-            "For God so loved the world that he gave his only begotten Son " +
-            "that whosoever believeth in him should not perish but have everlasting life");
+        string filePath = "scriptures.txt";
+
+        if (!File.Exists(filePath))
+        {
+            Console.WriteLine($"Error: Could not find '{filePath}'.");
+            return;
+        }
+
+        List<Scripture> library = ScriptureLoader.LoadFromFile(filePath);
+
+        if (library.Count == 0)
+        {
+            Console.WriteLine("No scriptures found in the file.");
+            return;
+        }
+
+        Random random = new Random();
+        Scripture scripture = library[random.Next(library.Count)];
 
         while (true)
         {
@@ -17,11 +35,11 @@ class Program
 
             if (scripture.AllWordsHidden())
             {
-                Console.WriteLine("All words are hidden. Great job!");
+                Console.WriteLine("All words are hidden. Well done!");
                 break;
             }
 
-            Console.Write("Press Enter to continue or type 'quit' to exit: ");
+            Console.Write("Press Enter to hide more words or type 'quit' to exit: ");
             string input = Console.ReadLine();
 
             if (input?.Trim().ToLower() == "quit")
