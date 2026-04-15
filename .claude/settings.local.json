@@ -1,7 +1,10 @@
 {
   "permissions": {
     "allow": [
-      "Bash(dotnet build *)"
+      "Bash(dotnet build *)",
+      "Bash(powershell -Command \"Get-ChildItem -Path 'C:\\\\Program Files', 'C:\\\\Users' -Filter 'dotnet.exe' -Recurse -ErrorAction SilentlyContinue -Depth 5 | Select-Object -ExpandProperty FullName\")",
+      "Bash(powershell -Command ' *)",
+      "Bash(powershell -Command \"Test-Path 'C:\\\\Windows\\\\system32\\\\dotnet.exe'; Test-Path 'C:\\\\Windows\\\\dotnet.exe'\")"
     ]
   }
 }

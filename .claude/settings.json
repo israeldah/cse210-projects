@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(powershell -Command \"Test-Path 'C:\\\\Users\\\\THIS PC\\\\AppData\\\\Local\\\\Microsoft\\\\WindowsApps\\\\dotnet.exe'\")"
+    ]
+  }
+}
